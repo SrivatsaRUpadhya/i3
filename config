@@ -192,6 +192,8 @@ mode "mode: [l]eft_extend [r]ight_extend [m]irror [s]ystem_only [h]dmi_only"{
 }
 bindsym $mod+x mode "exit: [l]ogout, [r]eboot, [s]hutdown"
 bindsym $mod+m mode "mode: [l]eft_extend [r]ight_extend [m]irror [s]ystem_only [h]dmi_only"
+bindsym $mod+Ctrl+Left move workspace to output left
+bindsym $mod+Ctrl+Right move workspace to output right
 # resize window (you can also use the mouse for that)
 mode "resize" {
 # These bindings trigger as soon as you enter the resize mode
