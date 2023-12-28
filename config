@@ -22,6 +22,8 @@ font pango:Fira Code 12
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
+exec_always --no-startup-id feh --bg-scale /home/srivatsa/Pictures/mybg.jpg
+exec --no-startup-id compton
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -61,10 +63,10 @@ bindsym $mod+d exec --no-startup-id dmenu_run
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -73,10 +75,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -85,7 +87,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+#bindsym $mod+h split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -180,11 +182,11 @@ mode "exit: [l]ogout, [r]eboot, [s]hutdown" {
 
 #Switch monitor modes
 mode "mode: [l]eft_extend [r]ight_extend [m]irror [s]ystem_only [h]dmi_only"{
-	bindsym m exec xrandr --output HDMI-A-0 --auto
+	bindsym m exec xrandr --output HDMI-A-0 --same-as eDP
 	bindsym r exec xrandr --output HDMI-A-0 --auto --right-of eDP 
 	bindsym l exec xrandr --output HDMI-A-0 --auto --left-of eDP 
-	bindsym s exec xrandr --output HDMI-A-0 --off
-	bindsym h exec xrandr --output HDMI-A-0 --auto
+	bindsym s exec xrandr --output eDP --auto | xrandr --output HDMI-A-0 --off 
+	bindsym h exec xrandr --output eDP --off
 
 	bindsym Escape mode "default"
 	bindsym Return mode "default"
@@ -254,6 +256,7 @@ exec nautilus
 # finds out, if available)
 bar {
 	status_command i3status	
-	font pango:Mono 8
+	#font pango:Mono 8
+	font xft:Droid Sans Mono 8
 }
  
